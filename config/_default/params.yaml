@@ -116,9 +116,11 @@ hugoblox:
   # ────────────────────────────────────────────────────────────────────────────
   copyright:
     # Copyright notice - supports {year}, {name}, {license} placeholders
-    notice: "© {year} {name}. Licensed under {license}"
+    notice: "© {year} {name}. Licensed under CC BY-NC-SA 4.0"
     license:
       type: cc                          # cc | all_rights | custom
+      name: "CC BY-NC-SA 4.0"
+      link: "https://creativecommons.org/licenses/by-nc-sa/4.0/"
       allow_derivatives: true
       share_alike: true
       allow_commercial: false
