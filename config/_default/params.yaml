@@ -117,11 +117,9 @@ hugoblox:
   copyright:
     # Copyright notice - supports {year}, {name} placeholders
     # Note: {license} placeholder is not currently supported by Hugo Blox, so the license name is hardcoded
-    notice: "© {year} {name}. Licensed under CC BY-NC-SA 4.0"
+    notice: "© {year} {name}. Licensed under <a href=https://creativecommons.org/licenses/by-nc-nd/4.0/>CC BY NC ND 4.0</a>"
     license:
       type: cc                          # cc | all_rights | custom
-      name: "CC BY-NC-SA 4.0"
-      link: "https://creativecommons.org/licenses/by-nc-sa/4.0/"
       allow_derivatives: true
       share_alike: true
       allow_commercial: false
