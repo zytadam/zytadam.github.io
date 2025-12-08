@@ -101,6 +101,9 @@ languages:
   - name: English
     level: 4
     label: Fluent
+  - name: French
+    level: 3
+    label: Fair
 
 awards:
   - title: Best Paper Award
