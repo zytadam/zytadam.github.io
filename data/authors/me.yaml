@@ -30,8 +30,8 @@ links:
     url: https://github.com/zytadam
   - icon: brands/linkedin
     url: https://www.linkedin.com/in/yutao-zhang-979510258/
-  - icon: academicons/google-scholar
-    url: https://scholar.google.com/citations?user=example
+  # - icon: academicons/google-scholar
+  #   url: https://scholar.google.com/citations?user=example
   - icon: academicons/orcid
     url: https://orcid.org/0009-0008-6204-7177
 
