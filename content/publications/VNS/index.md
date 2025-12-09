@@ -36,6 +36,7 @@ abstract: |-
 summary: We introduce a novel method that captures perceptual observations to reconstruct surfaces from rough or clean 3D sketches. Using an implicit neural representation and a novel flow-aligned loss, our variational optimization robustly generates surfaces, qualitatively and quantitatively outperforming previous methods.
 
 tags:
+  - SIGGRAPH ASIA 2025
   - Surface Reconstruction
 
 # Display this page in the Featured widget?
