@@ -44,7 +44,7 @@ education:
   - degree: PhD Computer Science
     institution: Université de Montréal
     start: 2023-01-01
-    # end: 2027-12-31
+    end: Now
     summary: |
       Research on geometry processing. Published 1 papers in SIGGRAPH ASIA.
     # button:
