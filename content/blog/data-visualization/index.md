@@ -1,15 +1,13 @@
 ---
-title: 📈 Communicate your results effectively with the best data visualizations
-summary: Use popular tools such as HuggingFace, Plotly, Mermaid, and data frames.
-date: 2023-10-25
+title: Presentation at HongKong for SIGGRAPH ASIA 2025 next week
+summary: I will be presenting my work "Variational Neural Surfacing of 3D Sketches" on SIGGRAPH ASIA 2025 at Hongkong.
+date: 2025-12-09
 authors:
   - me
 tags:
-  - Hugo
-  - Hugo Blox
-  - Markdown
+  - SIGGRAPH ASIA 2025
 cover:
-  image: "https://images.unsplash.com/photo-1557682250-33bd709cbe85?q=80&w=2560"
+  image: "https://asia.siggraph.org/2025/wp-content/uploads/2024/11/Group-45936-scaled.jpg"
   position:
     x: 50
     y: 40
@@ -24,7 +22,7 @@ cover:
   icon:
     name: "✨"
 image:
-  caption: 'Image credit: [**Unsplash**](https://unsplash.com)'
+  caption: 'Image credit: [**Unsplash**](https://asia.siggraph.org/2025/)'
 ---
 
 Hugo Blox is designed to give technical content creators a seamless experience. You can focus on the content and Hugo Blox handles the rest.
