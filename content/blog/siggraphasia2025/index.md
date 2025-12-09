@@ -27,7 +27,7 @@ image:
 
 Thrilled to be in Hong Kong next week for SIGGRAPH Asia 2025! I’ll be presenting my work, Variational Neural Surfacing of 3D Sketches, in collaboration with Stephanie Wang and my supervisor Mikhail Bessmeltsev.
 
- 🎨 [Variational Neural Surfacing of 3D Sketches](publications/vns/)
+ 🎨 [Variational Neural Surfacing of 3D Sketches](({{< relref "/publication/vns" >}}))
 
  We propose a new method for reconstructing surfaces from rough or precise 3D sketches by leveraging an implicit neural representation with a novel flow-aligned variational loss. Our approach robustly produces perceptually meaningful surfaces and outperforms prior work both qualitatively and quantitatively.
 
