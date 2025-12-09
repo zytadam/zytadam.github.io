@@ -45,6 +45,7 @@ education:
     institution: Université de Montréal
     start: 2023-01-01
     end: Now
+    icon: udem
     summary: |
       Research on geometry processing. Published 1 papers in SIGGRAPH ASIA.
     # button:
@@ -55,10 +56,12 @@ education:
     institution: Université de Montréal
     start: 2020-09-01
     end: 2022-12-31
+    icon: udem
   - degree: BA French
     institution: Peking University
     start: 2016-09-01
     end: 2020-06-30
+    icon: pku
 
 # experience:
 #   - role: Senior AI Research Scientist
