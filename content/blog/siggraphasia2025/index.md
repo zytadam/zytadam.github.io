@@ -22,7 +22,7 @@ cover:
   icon:
     name: "✨"
 image:
-  caption: 'Image credit: [**Unsplash**](https://asia.siggraph.org/2025/)'
+  caption: 'Image credit: [**SIGGRAPH ASIA 2025**](https://asia.siggraph.org/2025/)'
 ---
 
 Thrilled to be in Hong Kong next week for SIGGRAPH Asia 2025! I’ll be presenting my work, Variational Neural Surfacing of 3D Sketches, in collaboration with Stephanie Wang and my supervisor Mikhail Bessmeltsev.
