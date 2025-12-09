@@ -44,7 +44,7 @@ sections:
       title: '📚 My Research'
       subtitle: ''
       text: |-
-        I tackle problem of geometry processing, currently focusing on surface reconstruction for 3D wireframe and sketches.
+        I tackle problem of geometry processing, currently focusing on surface reconstruction for 3D wireframes and sketches.
 
         Please reach out to collaborate 😃
     design:
