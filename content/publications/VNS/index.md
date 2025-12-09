@@ -7,7 +7,7 @@ title: 'Variational Neural Surfacing of 3D Sketches'
 authors:
   - me
   - Stephanie Wang
-  - Mikhail Bessmeltsev
+  - Mikhail ​Bessmeltsev
 
 # Author notes (optional)
 author_notes: ""
