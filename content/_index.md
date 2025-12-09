@@ -46,7 +46,7 @@ sections:
       text: |-
         I tackle problem of geometry processing, currently focusing on surface reconstruction for 3D wireframes and sketches.
 
-        Please reach out to collaborate 😃
+        Feel free to reach out if you’d like to explore a collaboration. 😃
     design:
       columns: '1'
   - block: collection
