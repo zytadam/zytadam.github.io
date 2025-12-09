@@ -45,6 +45,7 @@ education:
     institution: Université de Montréal
     start: 2023-01-01
     end: ''
+    icon: custom/udem
     summary: |
       Research on geometry processing. Published 1 papers in SIGGRAPH ASIA.
     # button:
