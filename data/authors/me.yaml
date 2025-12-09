@@ -2,7 +2,7 @@ schema: hugoblox/author/v1
 slug: me
 is_owner: true
 name:
-  display: Yutao Zhang 张聿韬
+  display: Yutao Zhang
   given: Yutao
   family: Zhang
   alternate: 张聿韬  # Example: 王伟
