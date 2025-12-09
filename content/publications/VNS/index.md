@@ -24,7 +24,7 @@ publication_types: ['paper-conference']
 
 # Publication name and optional abbreviated publication name.
 publication: In SIGGRAPH ASIA 2025
-publication_short: In *SA 2025*
+publication_short: In *SIGGRAPH ASIA 2025*
 
 abstract: |-
   3D sketches are an effective representation of a 3D shape, convenient to create via modern Virtual or Augmented Reality (VR/AR) interfaces or from 2D sketches. For 3D sketches drawn by designers, human observers can consistently imagine the surface they imply, yet reconstructing such a surface with modern methods remains an open problem. Existing methods either assume a clean, well-structured 3D curve network (while in reality most 3D sketches are rough and unstructured), or make no effort to produce a surface consistent with perceptual observations. We propose a novel method that addresses this challenge by designing a system that reconstructs a surface that better aligns with human perception from a clean or rough set of 3D sketches. As the topology of the desired surface is unknown, we use an implicit neural surface representation, parameterized via its gradient field.
