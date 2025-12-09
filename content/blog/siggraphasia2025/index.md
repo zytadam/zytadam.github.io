@@ -1,5 +1,5 @@
 ---
-title: Presentation at HongKong for SIGGRAPH ASIA 2025 next week
+title: Presentation at HongKong for SIGGRAPH ASIA 2025 next week!
 summary: I will be presenting my work "Variational Neural Surfacing of 3D Sketches" on SIGGRAPH ASIA 2025 at Hongkong.
 date: 2025-12-09
 authors:
