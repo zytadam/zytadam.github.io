@@ -89,11 +89,9 @@
             {{ $profile.title }}
           </h1>
 
-          {{- with $profile.pronouns -}}
           <h1 class="{{ $name_class }} font-black text-gray-900 dark:text-white leading-tight">
-            {{ . }}
+            {{ $profile.name_alternate }}
           </h1>
-          {{- end -}}
           
           {{- with $profile.pronouns -}}
             <p class="text-lg text-gray-600 dark:text-gray-400">({{ . }})</p>
