@@ -51,8 +51,8 @@ hugoblox:
 links:
   # - type: pdf
   #   url: ""
-  # - type: code
-  #   url: https://github.com/HugoBlox/hugo-blox-builder
+  - type: code
+    url: https://github.com/zytadam/Variational-Neural-Surfacing-of-3D-Sketches
   # - type: dataset
   #   url: https://github.com/HugoBlox/hugo-blox-builder
   # - type: slides
