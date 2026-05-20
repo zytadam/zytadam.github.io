@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VNS Reconstruction Results</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #1a1a2e; color: #eee; font-family: system-ui, sans-serif; }
+.topbar { background: #1a7a5a; padding: 10px 20px; font-size: 0.9em; display: flex; justify-content: space-between; }
+.topbar a { color: #fff; text-decoration: none; }
+.topbar a:hover { text-decoration: underline; }
+h1 { text-align: center; padding: 16px 0 4px; font-size: 1.4em; color: #e0e0e0; }
+.subtitle { text-align: center; color: #888; font-size: 0.85em; padding-bottom: 12px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 6px;
+  padding: 0 12px 24px;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+.card {
+  background: #16213e;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.card h3 {
+  text-align: center;
+  padding: 6px 0 2px;
+  font-size: 0.85em;
+  color: #ccc;
+}
+.card canvas { display: block; width: 100% !important; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a href="/publications/vns/">&larr; Back to Publication</a>
+  <a href="/">Home</a>
+</div>
+<h1>Variational Neural Surfacing — Reconstruction Results</h1>
+<p class="subtitle">Left: input curve network &nbsp;|&nbsp; Right: reconstructed surface &nbsp;|&nbsp; Drag to rotate, scroll to zoom</p>
+<div class="grid" id="grid"></div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const MODELS = [
+  'Armchair', 'Bunny', 'Statue', 'Teapot', 'Tooth', 'Toy_horse', 'Walking_teapot'
+];
+
+const grid = document.getElementById('grid');
+const viewers = [];
+const loader = new OBJLoader();
+const sphereGeo = new THREE.SphereGeometry(1, 6, 4);
+
+function createViewer(container) {
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x16213e);
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.01, 100);
+  camera.position.set(0, 0, 3);
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  container.appendChild(renderer.domElement);
+
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.autoRotate = true;
+  controls.autoRotateSpeed = 2.0;
+
+  scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+  const d1 = new THREE.DirectionalLight(0xffffff, 0.8);
+  d1.position.set(2, 3, 4); scene.add(d1);
+  const d2 = new THREE.DirectionalLight(0x8888ff, 0.3);
+  d2.position.set(-2, -1, -2); scene.add(d2);
+
+  return { scene, camera, renderer, controls, container };
+}
+
+function fitToView(obj) {
+  const box = new THREE.Box3().setFromObject(obj);
+  const center = box.getCenter(new THREE.Vector3());
+  const size = box.getSize(new THREE.Vector3());
+  const s = 2.0 / Math.max(size.x, size.y, size.z);
+  obj.position.sub(center).multiplyScalar(s);
+  obj.scale.setScalar(s);
+}
+
+function parseObjVertices(text) {
+  const positions = [];
+  for (const line of text.split('\n')) {
+    if (line.startsWith('v ')) {
+      const parts = line.trim().split(/\s+/);
+      positions.push(parseFloat(parts[1]), parseFloat(parts[2]), parseFloat(parts[3]));
+    }
+  }
+  return new Float32Array(positions);
+}
+
+function addCurveSpheres(scene, positions) {
+  const count = positions.length / 3;
+  const dummy = new THREE.Object3D();
+  const mesh = new THREE.InstancedMesh(
+    sphereGeo,
+    new THREE.MeshPhongMaterial({ color: 0x00ccff }),
+    count
+  );
+  let minV = [Infinity,Infinity,Infinity], maxV = [-Infinity,-Infinity,-Infinity];
+  for (let i = 0; i < count; i++) {
+    for (let d = 0; d < 3; d++) {
+      const v = positions[i*3+d];
+      if (v < minV[d]) minV[d] = v;
+      if (v > maxV[d]) maxV[d] = v;
+    }
+  }
+  const extent = Math.max(maxV[0]-minV[0], maxV[1]-minV[1], maxV[2]-minV[2], 1e-6);
+  const radius = extent * 0.003;
+  for (let i = 0; i < count; i++) {
+    dummy.position.set(positions[i*3], positions[i*3+1], positions[i*3+2]);
+    dummy.scale.setScalar(radius);
+    dummy.updateMatrix();
+    mesh.setMatrixAt(i, dummy.matrix);
+  }
+  mesh.instanceMatrix.needsUpdate = true;
+  const group = new THREE.Group();
+  group.add(mesh);
+  scene.add(group);
+  return group;
+}
+
+function loadPair(name) {
+  const curveCard = document.createElement('div');
+  curveCard.className = 'card';
+  curveCard.innerHTML = `<h3>${name.replace(/_/g,' ')} — curves</h3>`;
+  grid.appendChild(curveCard);
+
+  const meshCard = document.createElement('div');
+  meshCard.className = 'card';
+  meshCard.innerHTML = `<h3>${name.replace(/_/g,' ')} — mesh</h3>`;
+  grid.appendChild(meshCard);
+
+  const cv = createViewer(curveCard);
+  const mv = createViewer(meshCard);
+  const pair = { curve: cv, mesh: mv, syncing: null };
+  viewers.push(pair);
+
+  let wheelTimer = null;
+  function setSync(side) {
+    pair.syncing = side;
+    clearTimeout(wheelTimer);
+    wheelTimer = setTimeout(() => { pair.syncing = null; }, 300);
+  }
+  cv.controls.addEventListener('start', () => pair.syncing = 'curve');
+  cv.controls.addEventListener('end', () => { if(pair.syncing==='curve') pair.syncing = null; });
+  mv.controls.addEventListener('start', () => pair.syncing = 'mesh');
+  mv.controls.addEventListener('end', () => { if(pair.syncing==='mesh') pair.syncing = null; });
+  cv.renderer.domElement.addEventListener('wheel', () => setSync('curve'), { passive: true });
+  mv.renderer.domElement.addEventListener('wheel', () => setSync('mesh'), { passive: true });
+
+  fetch(`obj/${name}_curve.obj`)
+    .then(r => r.text())
+    .then(text => {
+      const positions = parseObjVertices(text);
+      if (positions.length > 0) {
+        const group = addCurveSpheres(cv.scene, positions);
+        fitToView(group);
+      }
+    });
+
+  loader.load(`obj/${name}_mesh.obj`, obj => {
+    obj.traverse(c => {
+      if (c.isMesh) {
+        c.material = new THREE.MeshPhongMaterial({
+          color: 0xe8a87c, specular: 0x222222, shininess: 30,
+          side: THREE.DoubleSide,
+        });
+      }
+    });
+    mv.scene.add(obj);
+    fitToView(obj);
+  });
+}
+
+MODELS.forEach(loadPair);
+
+function resizeViewer(v) {
+  const w = v.container.clientWidth;
+  const h = Math.round(w * 0.85);
+  if (v.renderer.domElement.width !== w || v.renderer.domElement.height !== h) {
+    v.camera.aspect = w / h;
+    v.camera.updateProjectionMatrix();
+    v.renderer.setSize(w, h);
+  }
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  viewers.forEach(pair => {
+    resizeViewer(pair.curve);
+    resizeViewer(pair.mesh);
+    pair.curve.controls.update();
+    pair.mesh.controls.update();
+
+    if (pair.syncing === 'curve') {
+      pair.mesh.camera.position.copy(pair.curve.camera.position);
+      pair.mesh.camera.quaternion.copy(pair.curve.camera.quaternion);
+      pair.mesh.controls.target.copy(pair.curve.controls.target);
+    } else if (pair.syncing === 'mesh') {
+      pair.curve.camera.position.copy(pair.mesh.camera.position);
+      pair.curve.camera.quaternion.copy(pair.mesh.camera.quaternion);
+      pair.curve.controls.target.copy(pair.mesh.controls.target);
+    } else {
+      pair.mesh.camera.position.copy(pair.curve.camera.position);
+      pair.mesh.camera.quaternion.copy(pair.curve.camera.quaternion);
+      pair.mesh.controls.target.copy(pair.curve.controls.target);
+    }
+
+    pair.curve.renderer.render(pair.curve.scene, pair.curve.camera);
+    pair.mesh.renderer.render(pair.mesh.scene, pair.mesh.camera);
+  });
+}
+animate();
+</script>
+</body>
+</html>

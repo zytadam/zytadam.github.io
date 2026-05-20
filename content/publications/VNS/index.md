@@ -53,6 +53,8 @@ links:
   #   url: ""
   - type: code
     url: https://github.com/zytadam/Variational-Neural-Surfacing-of-3D-Sketches
+  - name: "Results Viewer"
+    url: /vns-results/
   # - type: dataset
   #   url: https://github.com/HugoBlox/hugo-blox-builder
   # - type: slides
