@@ -85,6 +85,6 @@ slides: ""
 ---
 
 > [!IMPORTANT] Errata — Comparison results in NeuralSketch2Surf ([Ye et al., 2025](https://hal.science/hal-05615004/))
-> Due to a file format I/O bug, the comparison results for our method (VNS) in the above paper are incorrect — our actual results are significantly better. We apologize for the error and any confusion it may have caused, and we thank the authors for their understanding. Their corrected paper with the correct comparison will be provided on the authors' website. Corrected results are available below.
+> Due to a file format I/O bug, the comparison results for our method (VNS) in the above paper are incorrect — our actual results are significantly better. We apologize for the error and any confusion it may have caused. Their corrected paper with the correct comparison will be provided on the authors' website. Corrected results are available below.
 >
 > **[View corrected VNS results](/vns-results/)**
