@@ -67,7 +67,7 @@ links:
 image:
   caption: ''
   focal_point: ''
-  preview_only: false
+  preview_only: true
 
 # Associated Projects (optional).
 #   Associate this publication with one or more of your projects.
@@ -84,10 +84,9 @@ projects: []
 slides: ""
 ---
 
-{{% callout warning %}}
-**Errata — Comparison results in [Music et al. (2025)](https://hal.science/hal-05615004/)**
+> [!IMPORTANT] Errata — Comparison results in [Music et al. (2025)](https://hal.science/hal-05615004/)
+> Due to a data I/O bug introduced when we prepared the results on behalf of the authors, the comparison results for our method (VNS) in the above paper are significantly worse than they should be. We apologize for the error and any confusion it may have caused, and we thank the authors for their understanding. Corrected results are available below.
+>
+> **[View corrected VNS results](/vns-results/)**
 
-Due to a data I/O bug introduced when we prepared the results on behalf of the authors, the comparison results for our method (VNS) in the above paper are significantly worse than they should be. We apologize for the error and any confusion it may have caused, and we thank the authors for their understanding. Corrected results are available below.
-
-**[View corrected VNS results](/vns-results/)**
-{{% /callout %}}
+![](featured.jpg)
