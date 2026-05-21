@@ -67,7 +67,7 @@ links:
 image:
   caption: ''
   focal_point: ''
-  preview_only: true
+  preview_only: false
 
 # Associated Projects (optional).
 #   Associate this publication with one or more of your projects.
@@ -88,5 +88,3 @@ slides: ""
 > Due to a data I/O bug introduced when we prepared the results on behalf of the authors, the comparison results for our method (VNS) in the above paper are significantly worse than they should be. We apologize for the error and any confusion it may have caused, and we thank the authors for their understanding. Corrected results are available below.
 >
 > **[View corrected VNS results](/vns-results/)**
-
-![](featured.jpg)
